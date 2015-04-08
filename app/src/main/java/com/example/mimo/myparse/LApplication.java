@@ -17,7 +17,7 @@ public class LApplication extends Application{
         Parse.initialize(this,
                 "bfzLl9jTEDhtUsqDQ2wYYXkqB9S5ak81F0d4Gyre"
                 ,
-                "bfzLl9jTEDhtUsqDQ2wYYXkqB9S5ak81F0d4Gyre"
+                "MY0MO2oGrZ9l7T8cVo4k4qkQ0EaWirIUVGoRGehT"
         );
 
         ParseUser.enableAutomaticUser();

@@ -7,14 +7,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+
+import javax.net.ssl.SSLServerSocket;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -37,6 +45,9 @@ public class MainActivity extends ActionBarActivity {
             HttpURLConnection connection = null;
             String mdate = null;
             String murl = "http://opendata.epa.gov.tw/ws/Data/AQX/?$select=SiteName,County,PSI,MajorPollutant,Status,PM10,PM2.5,FPMI,PublishTime&$orderby=SiteName&$skip=0&$top=1000&format=json";
+            String SSSS = null;
+            ArrayList<JsonDate> jsonArr = null;
+            String S1 = "";
 
             try {
                 url = new URL(murl);
@@ -47,7 +58,23 @@ public class MainActivity extends ActionBarActivity {
                 mdate = bufferedReader.readLine();
                 bufferedReader.close();
                 try {
-                    JSONObject jsonObject = new JSONObject(mdate);
+
+                    JSONObject obj = new JSONArray(mdate).getJSONObject(0);
+                    SSSS = obj.getString("PSI");
+
+                    Gson gson = new Gson();
+
+                    Type listType = new TypeToken<ArrayList<JsonDate>>() {
+                    }.getType();
+                    jsonArr = gson.fromJson(mdate, listType);
+
+                    for (JsonDate x : jsonArr) {
+                        String s = x.getCounty();
+                        String s1 =x.getSiteName();
+                        String s2 = x.getPM10();
+                       S1 = S1+"   "+ s+s1+s2;
+                    }
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -57,12 +84,15 @@ public class MainActivity extends ActionBarActivity {
             }
 
 
-            return mdate;
+            return S1;
         }
 
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(String rrrr) {
+
             TextView tx = (TextView) findViewById(R.id.textView);
-            tx.setText(result);
+
+
+            tx.setText(rrrr);
         }
 
 

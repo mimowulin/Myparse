@@ -22,8 +22,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-import javax.net.ssl.SSLServerSocket;
-
 
 public class MainActivity extends ActionBarActivity {
 
@@ -63,16 +61,16 @@ public class MainActivity extends ActionBarActivity {
                     SSSS = obj.getString("PSI");
 
                     Gson gson = new Gson();
-
+                    //遇到json是陣列開頭要用這語法
                     Type listType = new TypeToken<ArrayList<JsonDate>>() {
                     }.getType();
                     jsonArr = gson.fromJson(mdate, listType);
 
                     for (JsonDate x : jsonArr) {
                         String s = x.getCounty();
-                        String s1 =x.getSiteName();
+                        String s1 = x.getSiteName();
                         String s2 = x.getPM10();
-                       S1 = S1+"   "+ s+s1+s2;
+                        S1 = S1 + "   " + s + s1 + s2;
                     }
 
 

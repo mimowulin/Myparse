@@ -13,7 +13,7 @@ public class LApplication extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
-
+//登入parse
         Parse.initialize(this,
                 "bfzLl9jTEDhtUsqDQ2wYYXkqB9S5ak81F0d4Gyre"
                 ,

@@ -36,12 +36,7 @@ import java.util.ArrayList;
     }
 
     public void jsondate  () {
-        for (JsonDate x : jsonArr) {
-            String s = x.getCounty();
-            String s1 = x.getSiteName();
-            String s2 = x.getPM10();
-            S1 = S1 + "   " + s + s1 + s2;
-        }
+
     }
     public String getS1() {
         return S1;

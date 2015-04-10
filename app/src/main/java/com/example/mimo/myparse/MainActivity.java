@@ -2,22 +2,33 @@ package com.example.mimo.myparse;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
-    ListView lv ;
+    ListView lv, lv1 ;
+    DrawerLayout mDrawerLayout;
+    ActionBarDrawerToggle mDrawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +38,16 @@ public class MainActivity extends ActionBarActivity {
         Task task = new Task();
         task.execute();
         lv = (ListView)findViewById(R.id.listView);
+        lv1 = (ListView)findViewById(R.id.listView2);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        toolbar.setTitle("霾害資訊");
+        toolbar.setSubtitle("空氣品質即時汙染指標(每小時更新)");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer);
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar,R.string.open, R.string.close);
+        mDrawerToggle.syncState();
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
 
 
 
@@ -63,15 +84,34 @@ public class MainActivity extends ActionBarActivity {
         }
 
         protected void onPostExecute(String rrrr) {
+            ArrayList<String> X= null;
             lv.setAdapter(new Myadapter(MainActivity.this,rrrr));
-
-
-            TextView tx = (TextView) findViewById(R.id.textView);
-
+            ArrayList<JsonDate> s = ArrayJson(rrrr);
+          int d =s.size();
+           
 
 
         }
 
+
+    }
+
+
+    public ArrayList<JsonDate> ArrayJson (String toto){
+        Gson gson = new Gson();
+        Type listType = new TypeToken<ArrayList<JsonDate>>() {
+        }.getType();
+        ArrayList<JsonDate> jsonArr = gson.fromJson(toto, listType);
+        return jsonArr;
+    }
+
+    public  ArrayList<String> CountyList (ArrayList<JsonDate> arrayjson){
+        ArrayList<String> L= null;
+
+        for(int i = 0 ; i<arrayjson.size() ; i++) {
+            L.add(arrayjson.get(i).getCounty());
+        }
+            return L;
 
     }
 

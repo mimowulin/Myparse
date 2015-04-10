@@ -5,32 +5,29 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.TextView;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
+    ListView lv ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+       // getListView().setEmptyView(findViewById(R.id.textView));
         Task task = new Task();
         task.execute();
+        lv = (ListView)findViewById(R.id.listView);
+
 
 
     }
@@ -43,9 +40,9 @@ public class MainActivity extends ActionBarActivity {
             HttpURLConnection connection = null;
             String mdate = null;
             String murl = "http://opendata.epa.gov.tw/ws/Data/AQX/?$select=SiteName,County,PSI,MajorPollutant,Status,PM10,PM2.5,FPMI,PublishTime&$orderby=SiteName&$skip=0&$top=1000&format=json";
-            String SSSS = null;
-            ArrayList<JsonDate> jsonArr = null;
-            String S1 = "";
+            String X= null;
+
+
 
             try {
                 url = new URL(murl);
@@ -55,42 +52,24 @@ public class MainActivity extends ActionBarActivity {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
                 mdate = bufferedReader.readLine();
                 bufferedReader.close();
-                try {
-
-                    JSONObject obj = new JSONArray(mdate).getJSONObject(0);
-                    SSSS = obj.getString("PSI");
-
-                    Gson gson = new Gson();
-                    //遇到json是陣列開頭要用這語法
-                    Type listType = new TypeToken<ArrayList<JsonDate>>() {
-                    }.getType();
-                    jsonArr = gson.fromJson(mdate, listType);
-
-                    for (JsonDate x : jsonArr) {
-                        String s = x.getCounty();
-                        String s1 = x.getSiteName();
-                        String s2 = x.getPM10();
-                        S1 = S1 + "   " + s + s1 + s2;
-                    }
 
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
 
-            return S1;
+            return mdate;
         }
 
         protected void onPostExecute(String rrrr) {
+            lv.setAdapter(new Myadapter(MainActivity.this,rrrr));
+
 
             TextView tx = (TextView) findViewById(R.id.textView);
 
 
-            tx.setText(rrrr);
+
         }
 
 

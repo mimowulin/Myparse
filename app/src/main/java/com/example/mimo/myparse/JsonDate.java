@@ -1,5 +1,7 @@
 package com.example.mimo.myparse;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.json.JSONObject;
 
 /**
@@ -11,9 +13,11 @@ public class JsonDate {
     private String County;
     private String PSI;
     private String MajorPollutant;
-    private String Status = "Status";
+    private String Status ;
     private String PM10;
-    private String PM2_5 = "PM2.5";
+    //對照遠端名稱
+    @SerializedName("PM2.5")
+    private String PM2_5;
     private String FPMI;
     private String PublishTime;
     JSONObject jsonobject;

@@ -19,7 +19,7 @@ public class LApplication extends Application{
                 ,
                 "MY0MO2oGrZ9l7T8cVo4k4qkQ0EaWirIUVGoRGehT"
         );
-
+//匿名使用者
         ParseUser.enableAutomaticUser();
         ParseACL defaultACL = new ParseACL();
 

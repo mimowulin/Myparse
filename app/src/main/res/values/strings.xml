@@ -1,8 +1,10 @@
 <resources>
-    <string name="app_name">My parse</string>
+    <string name="app_name">L霧霾2.5</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="open">OPEN</string>
     <string name="close">CLOSE</string>
+    <string name="banner_ad_unit_id">ca-app-pub-7341900080022107/2290092877</string>
+    <string name="title_activity_search">Search</string>
 </resources>

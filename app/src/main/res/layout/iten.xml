@@ -76,12 +76,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="New Text"
+                android:textSize="16dp"
                 android:id="@+id/sitename" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="二林"
+                android:textSize="16dp"
                 android:id="@+id/county" />
         </LinearLayout>
     </LinearLayout>
@@ -102,6 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="00"
+
             android:layout_weight="1"
             android:id="@+id/psi" />
 
@@ -117,6 +120,7 @@
             android:layout_height="wrap_content"
             android:text="00"
             android:layout_weight="1"
+            android:textColor="#ffff041d"
             android:id="@+id/majorpollutant" />
 
         <TextView

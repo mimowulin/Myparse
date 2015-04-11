@@ -1,6 +1,7 @@
 package com.example.mimo.myparse;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import org.json.JSONArray;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -33,6 +36,10 @@ import java.util.ArrayList;
         Type listType = new TypeToken<ArrayList<JsonDate>>() {
         }.getType();
         jsonArr = gson.fromJson(jsonstr, listType);
+    }
+    public  Myadapter(Context ctxt, ArrayList<JsonDate> jsonArr){
+        myInflater = LayoutInflater.from(ctxt);
+        this.jsonArr = jsonArr;
     }
 
     public void jsondate  () {
@@ -75,6 +82,12 @@ import java.util.ArrayList;
         viewTag.county.setText(jsonArr.get(position).getCounty());
         viewTag.psi.setText(jsonArr.get(position).getPSI());
         viewTag.masorPollutant.setText(jsonArr.get(position).getMajorPollutant());
+        if (jsonArr.get(position).getStatus().equals("普通")){
+
+            viewTag.status.setTextColor(Color.rgb(255,255,50));
+        }else {
+            viewTag.status.setTextColor(Color.rgb(183,183,183));
+        }
         viewTag.status.setText(jsonArr.get(position).getStatus());
         viewTag.pm10.setText(jsonArr.get(position).getPM10());
         viewTag.pm2_5.setText(jsonArr.get(position).getPM2_5());

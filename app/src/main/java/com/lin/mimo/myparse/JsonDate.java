@@ -1,4 +1,4 @@
-package com.example.mimo.myparse;
+package com.lin.mimo.myparse;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -13,7 +13,7 @@ public class JsonDate {
     private String County;
     private String PSI;
     private String MajorPollutant;
-    private String Status ;
+    private String Status;
     private String PM10;
     //對照遠端名稱
     @SerializedName("PM2.5")

@@ -1,4 +1,4 @@
-package com.example.mimo.myparse;
+package com.lin.mimo.myparse;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -9,14 +9,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ListView;
-import android.widget.Spinner;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class Search extends ActionBarActivity {
-    ArrayList<JsonDate> x= new ArrayList<JsonDate>();
+    ArrayList<JsonDate> x = new ArrayList<JsonDate>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,22 +38,23 @@ public class Search extends ActionBarActivity {
 //
 //            }
 //        });
-        GridView gridView = (GridView)findViewById(R.id.gridView);
+        GridView gridView = (GridView) findViewById(R.id.gridView);
         gridView.setNumColumns(6);
-        gridView.setAdapter(new ArrayAdapter<String>(Search.this,android.R.layout.simple_list_item_1,mSiteName(x)));
-       gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-           @Override
-           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               ArrayList<JsonDate> mjson = new ArrayList<JsonDate>();
-               mjson.add(x.get(position));
-               ListView lv3 = (ListView)findViewById(R.id.listView3);
-               lv3.setAdapter(new Myadapter(Search.this,mjson));
-           }
-       });
+        gridView.setAdapter(new ArrayAdapter<String>(Search.this, android.R.layout.simple_list_item_1, mSiteName(x)));
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ArrayList<JsonDate> mjson = new ArrayList<JsonDate>();
+                mjson.add(x.get(position));
+                ListView lv3 = (ListView) findViewById(R.id.listView3);
+                lv3.setAdapter(new Myadapter(Search.this, mjson));
+            }
+        });
     }
-    public ArrayList<String> mSiteName (ArrayList<JsonDate> x){
-        ArrayList<String> arrayList= new ArrayList<String>();
-        for (int i=0 ;i<x.size(); i++){
+
+    public ArrayList<String> mSiteName(ArrayList<JsonDate> x) {
+        ArrayList<String> arrayList = new ArrayList<String>();
+        for (int i = 0; i < x.size(); i++) {
             arrayList.add(x.get(i).getSiteName());
         }
         return arrayList;

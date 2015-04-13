@@ -1,4 +1,4 @@
-package com.example.mimo.myparse;
+package com.lin.mimo.myparse;
 
 import android.app.Application;
 
@@ -9,8 +9,9 @@ import com.parse.ParseUser;
 /**
  * Created by mimo on 2015/3/29.
  */
-public class LApplication extends Application{
+public class LApplication extends Application {
     String SX = null;
+
     @Override
     public void onCreate() {
         super.onCreate();

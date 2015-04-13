@@ -4,11 +4,11 @@ android {
     compileSdkVersion 22
     buildToolsVersion "21.1.2"
     defaultConfig {
-        applicationId 'com.example.mimo.myparse'
+        applicationId 'com.lin.mimo.myparse'
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "1.2"
     }
     buildTypes {
         release {

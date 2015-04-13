@@ -1,9 +1,9 @@
-package com.example.mimo.myparse;
+package com.lin.mimo.myparse;
 
 import com.google.gson.annotations.SerializedName;
 
 
-public class GsonJson{
+public class GsonJson {
 
     private static final String FIELD_O3 = "O3";
     private static final String FIELD_MAJOR_POLLUTANT = "MajorPollutant";
@@ -55,7 +55,7 @@ public class GsonJson{
     private int mNO2;
 
 
-    public GsonJson(){
+    public GsonJson() {
 
     }
 

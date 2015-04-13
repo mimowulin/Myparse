@@ -5,39 +5,43 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/drawer"
+    android:background="#33B5E5"
     tools:context=".MainActivity">
-<!-- content -->
+    <!-- content -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:alpha="50">
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.9"
-        android:elevation="10dp"
-        android:background="#c8ff041d"
-        android:id="@+id/toolbar">
+        <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9"
+            android:elevation="7dp"
+            android:alpha="100"
+            android:id="@+id/toolbar">
 
         </android.support.v7.widget.Toolbar>
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:id="@+id/listView"
-        android:dividerHeight="4dp"
-        android:layout_below="@+id/view"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:padding="10dp"
+            android:id="@+id/listView"
+            android:dividerHeight="4dp"
+            android:elevation="4dp"
+            android:layout_below="@+id/view"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.9"
-            android:background="#b4ff041d">
+            >
 
             <com.google.android.gms.ads.AdView
                 android:id="@+id/adView"
@@ -46,8 +50,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true"
                 ads:adSize="BANNER"
-                ads:adUnitId="@string/banner_ad_unit_id">
-            </com.google.android.gms.ads.AdView>
+                ads:adUnitId="@string/banner_ad_unit_id"></com.google.android.gms.ads.AdView>
         </LinearLayout>
     </LinearLayout>
 
@@ -55,18 +58,17 @@
     <LinearLayout
         android:layout_width="240dp"
         android:layout_height="match_parent"
-        android:id = "@+id/drawer_view"
+        android:id="@+id/drawer_view"
         android:layout_gravity="start"
         android:elevation="7dp"
-        android:background="#c81d44ff"
         android:orientation="vertical">
-
+        android:background="##33B5E5"
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="60dp"
 
             android:elevation="10dp"
-            android:background="#c8ff041d"
+
             android:id="@+id/toolbar1">
 
         </android.support.v7.widget.Toolbar>

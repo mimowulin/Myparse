@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mimo.myparse.Search">
+    tools:context="com.lin.mimo.myparse.Search">
 
     <LinearLayout
         android:orientation="vertical"
@@ -12,7 +13,8 @@
 
 
 
-        d<ListView
+
+        <ListView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4"

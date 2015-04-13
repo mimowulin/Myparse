@@ -1,4 +1,4 @@
-package com.example.mimo.myparse;
+package com.lin.mimo.myparse;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
